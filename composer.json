@@ -1,0 +1,17 @@
+{
+    "config":
+    {
+        "vendor-dir": "application/libraries/vendors"
+    },
+    
+    "require":
+    {
+    	 "doctrine/orm": "*",
+    	 "phpunit/phpunit": "4.2.*"
+    },
+    
+    "autoload": {
+        "psr-0": {"entities": "/application/"}
+    }
+ 
+}
