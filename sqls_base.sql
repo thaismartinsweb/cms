@@ -9,7 +9,7 @@ update content set type_page_id = 1 where id in (1,2,3);
 select * from module;
 drop table module;
 insert into module values
-(null, 'Home', 'home', 'home', 'primary'),
+(null, 'Home', 'cms', 'home', 'primary'),
 (null, 'Dados do Site', 'config', 'wrench', 'success'),
 (null, 'Menu', 'menu', 'tasks', 'info'),
 (null, 'Content', 'content', 'quote-left', 'inverse'),
@@ -20,28 +20,38 @@ insert into module values
 (null, 'Categoria de Produtos', 'productcategory', 'tags', 'info'),
 (null, 'Produtos', 'product', 'glass', 'inverse');
 
-update module set icon = 'tasks' where id = 3;
+update module set controller = 'cms' where id = 1;
 
 select * from module_action;
 drop table module_action;
 insert into module_action values
 (null, 3, 'Gerenciar Todos','index', 'pencil-square-o'),
-(null, 3, 'Adiconar Novo', 'fresh', 'plus-square-o'),
+(null, 3, 'Adicionar Novo', 'fresh', 'plus-square-o'),
 (null, 4, 'Gerenciar Todos','index', 'pencil-square-o'),
-(null, 4, 'Adiconar Novo', 'fresh', 'plus-square-o'),
+(null, 4, 'Adicionar Novo', 'fresh', 'plus-square-o'),
 (null, 5, 'Gerenciar Todos','index', 'pencil-square-o'),
-(null, 5, 'Adiconar Novo', 'fresh', 'plus-square-o'),
+(null, 5, 'Adicionar Novo', 'fresh', 'plus-square-o'),
 (null, 6, 'Gerenciar Todos','index', 'pencil-square-o'),
-(null, 6, 'Adiconar Novo', 'fresh', 'plus-square-o'),
+(null, 6, 'Adicionar Novo', 'fresh', 'plus-square-o'),
 (null, 7, 'Gerenciar Todos','index', 'pencil-square-o'),
-(null, 7, 'Adiconar Novo', 'fresh', 'plus-square-o'),
+(null, 7, 'Adicionar Novo', 'fresh', 'plus-square-o'),
 (null, 8, 'Gerenciar Todos','index', 'pencil-square-o'),
-(null, 8, 'Adiconar Novo', 'fresh', 'plus-square-o'),
+(null, 8, 'Adicionar Novo', 'fresh', 'plus-square-o'),
 (null, 9, 'Gerenciar Todos','index', 'pencil-square-o'),
-(null, 9, 'Adiconar Novo', 'fresh', 'plus-square-o'),
+(null, 9, 'Adicionar Novo', 'fresh', 'plus-square-o'),
 (null, 10, 'Gerenciar Todos','index', 'pencil-square-o'),
-(null, 10, 'Adiconar Novo', 'fresh', 'plus-square-o');
+(null, 10, 'Adicionar Novo', 'fresh', 'plus-square-o');
 
+insert into type_page values
+(null, 'Página com imagem destaque no topo', 'Modelo de página com uma imagem grande em destaque no topo do página', '', 'page_top.png');
 
+update type_page
+set image = 'page_top.png'
+where id = 1;
 
 select * from config;
+select * from menu;
+select * from content;
+select * from type_page;
+
+drop table content;

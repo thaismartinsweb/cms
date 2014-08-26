@@ -20,6 +20,7 @@ class Menumodel extends CMS_Model {
 						"master" =>$item->getMaster(),
 						"description" => $item->getDescription(),
 						"image" => $item->getImage(),
+						"special" => $item->isSpecial(),
 						"subs" => $this->getSubsMenus($item->getId())
 				);
 			}
@@ -43,6 +44,7 @@ class Menumodel extends CMS_Model {
 						"master" =>$item->getMaster(),
 						"description" => $item->getDescription(),
 						"image" => $item->getImage(),
+						"special" => $item->isSpecial(),
 						"subs" => $this->getSubsMenus($item->getId())
 				);
 			}
@@ -67,6 +69,7 @@ class Menumodel extends CMS_Model {
 						"master" =>$item->getMaster(),
 						"description" => $item->getDescription(),
 						"image" => $item->getImage(),
+						"special" => $item->isSpecial(),
 						"subs" => $this->getSubsMenus($item->getId())
 				);
 			}

@@ -48,7 +48,7 @@
 							<?php }?>
 						<?php } else {?>
 							<tr>
-								<td colspan="5" style="padding:70px 0;text-align:center"><?php echo $lang['no_result']?></td>
+								<td colspan="5" style="padding:70px 0;text-align:center"><?php echo $lang['no_results']?></td>
 							</tr>
 						<?php }?>					
 					</tbody>

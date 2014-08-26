@@ -19,14 +19,16 @@ class Content
 	private $id;
 	
 	/**
-	 * @Column(type="integer")
+	 * @ManyToOne(targetEntity="entities\menu")
+     * @JoinColumn(name="menu_id", referencedColumnName="id", nullable=true)
 	 */
-	private $menu_id;
+	private $menu;
 	
 	/**
-	 * @Column(type="integer")
+	 * @ManyToOne(targetEntity="entities\typepage")
+     * @JoinColumn(name="type_page_id", referencedColumnName="id")
 	 */
-	private $type_page_id;
+	private $type_page;
 
 	/**
 	 * @Column(type="string", length=100)
@@ -39,7 +41,7 @@ class Content
 	private $description;
 	
 	/**
-	 * @Column(type="string", length=2000)
+	 * @Column(type="text", nullable=true)
 	 */
 	private $content;
 	
@@ -49,15 +51,19 @@ class Content
 	private $image;
 	
 	/**
-	 * @Column(type="datetime", nullable=false)
+	 * @Column(type="datetime")
 	 */
 	private $date_created;
 	
 	/**
 	 * @Column(type="integer", length=1)
 	 */
-	private $published;
+	private $special;
 	
+	/**
+	 * @Column(type="integer", length=1)
+	 */
+	private $published;
 	
 	public function setId($id){
 		$this->id = $id;
@@ -67,20 +73,20 @@ class Content
 		return $this->id;
 	}
 	
-	public function setMenuId($id){
-		$this->menu_id = $id;
+	public function setMenu($menu = null){
+		$this->menu = $menu;
 	}
 	
-	public function getMenuId(){
-		return $this->menu_id;
+	public function getMenu(){
+		return $this->menu;
 	}
 	
-	public function setTypePageId($id){
-		$this->type_page_id = $id;
+	public function setTypePage($page){
+		$this->type_page = $page;
 	}
 	
-	public function getTypePageId(){
-		return $this->type_page_id;
+	public function getTypePage(){
+		return $this->type_page;
 	}
 	
 	public function setTitle($title){
@@ -129,6 +135,14 @@ class Content
 	
 	public function getPublished(){
 		return $this->published;
+	}
+	
+	public function setSpecial($special){
+		$this->special = $special;
+	}
+	
+	public function isSpecial(){
+		return $this->special;
 	}
 
 }

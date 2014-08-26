@@ -11,7 +11,7 @@
     },
     
     "autoload": {
-        "psr-0": {"entities": "/application/"}
+        "psr-0": {"entities": "/application/libraries/vendors"}
     }
  
 }

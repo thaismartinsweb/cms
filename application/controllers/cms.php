@@ -17,7 +17,7 @@ class Cms extends CMS_Controller {
 		$data['title'] = $this->title;
 		$data['icon'] = $this->icon;
 		$data['last_content'] = $this->lang->line('last_content');
-		$data['lang']['no_result'] = $this->lang->line('no_result');
+		$data['lang']['no_results'] = $this->lang->line('no_results');
 	
 		$this->template->setViewAdmin($this->title, 'cms/index', $data);
 	}

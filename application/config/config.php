@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-// $config['base_url']	= 'https://teste.admin.com.br/';
-$config['base_url'] = 'http://localhost/admin';
+$config['base_url']	= 'https://teste.admin.com.br/';
+// $config['base_url'] = 'http://localhost/admin';
 
 /*
 |--------------------------------------------------------------------------

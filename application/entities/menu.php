@@ -20,7 +20,7 @@ class Menu
 	private $id;
 	
 	/**
-	 * @Column(type="integer", nullable=true, nullable=true)
+	 * @Column(type="integer", nullable=true)
 	 */
 	private $master_id;
 
@@ -38,6 +38,11 @@ class Menu
 	 * @Column(type="string", length=100, nullable=true)
 	 */
 	private $image;
+	
+	/**
+	 * @Column(type="integer", length=1)
+	 */
+	private $special;
 	
 	
 	public function setId($id){
@@ -78,6 +83,14 @@ class Menu
 	
 	public function getImage(){
 		return $this->image;
+	}
+	
+	public function setSpecial($special){
+		$this->special = $special;
+	}
+	
+	public function isSpecial(){
+		return $this->special;
 	}
 
 }

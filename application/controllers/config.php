@@ -92,6 +92,9 @@ class Config extends CMS_Controller {
 		$data['title'] = $this->title;
 		$data['icon']  = $this->icon;
 		$data['controller'] = $this->controller;
+		$data['lang']['change'] = $this->lang->line('change');
+		$data['lang']['delete'] = $this->lang->line('delete');
+		$data['lang']['save'] = $this->lang->line('save');
 		$data['base'] = $this->configmodel->getConfigData();
 		
 		return $data;

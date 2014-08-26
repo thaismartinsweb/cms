@@ -1,6 +1,7 @@
 <?php
-require_once '../../../config/defines.php';
-require_once '../../doctrine.php';
+require '../../../config/defines.php';
+require '../../doctrine.php';
 
-$em = new Doctrine();
-return $em->helperSet;
+
+$doctrine = new Doctrine();
+return $doctrine->helperSet;

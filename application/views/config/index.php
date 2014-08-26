@@ -8,7 +8,7 @@
 					<div class="alert alert-danger">
 						<button data-dismiss="alert" class="close" type="button"><i class="icon-remove"></i></button>
 						<i class="icon-ban-circle icon-large"></i>
-						<strong>ERROR</strong> <?php echo $item ?>
+						<strong style="text-transform:uppercase;"><?php echo $lang['error']?></strong> <?php echo $item ?>
 					</div>
 				<?php } ?>
           	<?php } ?>
@@ -17,7 +17,7 @@
 				<div class="alert alert-success">
 					<button data-dismiss="alert" class="close" type="button"><i class="icon-remove"></i></button>
 					<i class="icon-ok-sign icon-large"></i>
-					<strong>SUCESSO</strong> <?php echo $success ?>
+					<strong style="text-transform:uppercase;"><?php echo $lang['success']?></strong> <?php echo $success ?>
 				</div>
           	<?php } ?>
           	
@@ -37,17 +37,17 @@
 					<div class="controls media">
 						<div class="bg-light pull-left text-center thumb-image">
 							<?php if(isset($base['logo'])) {?>
-								<a href="<?php echo base_url() ?><?php echo PUBLIC_DIR ?>config/<?php echo $base['logo']?>" data-lightbox="<?php echo $base['logo']?>">
-									<img src="<?php echo base_url() ?><?php echo PUBLIC_DIR ?>config/<?php echo $base['logo']?>" />
+								<a href="<?php echo base_url() ?><?php echo PUBLIC_DIR ?><?php echo $controller ?>/<?php echo $base['logo']?>" data-lightbox="<?php echo $base['logo']?>">
+									<img src="<?php echo base_url() ?><?php echo PUBLIC_DIR ?><?php echo $controller ?>/<?php echo $base['logo']?>" />
 								</a>
 							<?php } else {?>
 								<i class="icon-user inline icon-light icon-3x m-t-large m-b-large"></i>
 							<?php } ?>
 						</div>
 						<div class="media-body">
-							<input type="file" title="Alterar" name="logo" class="btn btn-small btn-info m-b-small"><br>
+							<input type="file" title="<?php echo $lang['change']?>" name="logo" class="btn btn-small btn-info m-b-small"><br>
 							<?php if(isset($base['logo'])) { ?>
-								<a class="btn btn-small btn-default" onclick="window.location='<?php echo base_url() ?><?php echo $controller ?>/remove">Deletar</a>
+								<a class="btn btn-small btn-default" onclick="window.location='<?php echo base_url() ?><?php echo $controller ?>/remove"><?php echo $lang['delete']?></a>
 							<?php } ?>
 						</div>
 					</div>
@@ -61,14 +61,14 @@
             	</div>
             	
             	<div class="control-group">
-            		<label class="control-label">Contact</label>
+            		<label class="control-label">Telefone de Contato</label>
             		<div class="controls">
             			<input type="tel" placeholder="(xx)xxxx-xxxx" name="contact" value="<?php echo $base['contact']?>" class="bg-focus">
 					</div>
             	</div>
                 
                 <div class="control-group">
-            		<label class="control-label">Address</label>
+            		<label class="control-label">Endereço Completo</label>
             		<div class="controls">
             			<input type="text" placeholder="Rua xxxx, xx - Bairro xxx - CEP:xxxxx-xxx" name="address" value="<?php echo $base['address']?>" class="bg-focus input-xxlarge">
 					</div>
@@ -76,7 +76,7 @@
 
 				<div class="control-group">
 					<div class="controls">                      
-						<button type="submit" class="btn btn-primary">Salvar</button>
+						<button type="submit" class="btn btn-primary"><?php echo $lang['save']?></button>
 					</div>
 				</div>
             </form>

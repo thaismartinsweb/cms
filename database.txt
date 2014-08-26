@@ -2,9 +2,16 @@ MODELO - BANCO DE DADOS
 
 MENU
  id
- id_master
+ master_id
  title
  description
+ image
+ 
+TYPE_PAGE
+ id
+ title
+ description
+ content
  image
  
 CONTENT
@@ -14,7 +21,9 @@ CONTENT
  description
  content
  image
-
+ date_created
+ published
+ 
 PHOTO_GALLERY
  id
  title

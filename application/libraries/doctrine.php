@@ -15,7 +15,7 @@ class Doctrine {
 		 $namespace = 'entities';
 		 $models_path = APP_DIR;
 
-		 $isDevMode = false;  
+		 $isDevMode = true;  
 		
 		 // the connection configuration  
 		 $dbParams = array(  

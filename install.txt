@@ -1,10 +1,9 @@
-PASSOS DE INSTALA√á√ÉO DO AMBIENTE
-
+PASSOS DE INSTALA«√O DO AMBIENTE
 
 COMPOSER
 Acessar a pasta do projeto
 
-1. Instala√ß√£o
+1. InstalaÁ„o
 	curl -sS https://getcomposer.org/installer | php
 	
 2. Executar
@@ -15,7 +14,7 @@ Acessar a pasta do projeto
 DOCTRINE
 Acessar a pasta /var/www/admin/application/libraries/vendors/bin
 
-1. Instala√ß√£o
+1. InstalaÁ„o
 	 php doctrine orm:schema-tool:create
 
 2. Update
@@ -24,6 +23,15 @@ Acessar a pasta /var/www/admin/application/libraries/vendors/bin
 3. Gerar Entidades
 	php doctrine orm:generate-entities --generate-annotations="1" ../../../entities
 
+4. Mudar autoload
+
+5. Criar cli-config.php
+
+
+PASTAS
+1. Alterar Permiss„o
+	chmod -R 777 public/*
+	
 
 DATABASES
 insert into module values
