@@ -8,17 +8,18 @@ class Menumodel extends CMS_Model {
 	
 	public function getAllMenus(){
 		
-		$query = 'select m from entities\\menu m where m.master_id is null';
-		$itens = $this->executeQuery($query);
+		$args = array('master_id' => 0);
+		$itens = $this->findBy($args);
 		$content = false;
-		
+
 		if($itens){
 			foreach($itens as $item){
 				$content[] = array(
 						"id" => $item->getId(),
 						"title" => $item->getTitle(),
-						"menu_id" =>$item->getMasterId(),
-						"content" => $item->getContent(),
+						"master" =>$item->getMaster(),
+						"description" => $item->getDescription(),
+						"image" => $item->getImage(),
 						"subs" => $this->getSubsMenus($item->getId())
 				);
 			}
@@ -30,9 +31,8 @@ class Menumodel extends CMS_Model {
 	
 	public function getSubsMenus($id){
 	
-		$query = 'select m from entities\\menu m where m.master_id = :master';
-		$args  = array('master' => $id);
-		$itens = $this->executeQuery($query, $args);
+		$args  = array('master_id' => $id);
+		$itens = $this->findBy($args);
 		$content = false;
 
 		if($itens){
@@ -40,13 +40,38 @@ class Menumodel extends CMS_Model {
 				$content[] = array(
 						"id" => $item->getId(),
 						"title" => $item->getTitle(),
-						"menu_id" =>$item->getMasterId(),
-						"content" => $item->getContent(),
+						"master" =>$item->getMaster(),
+						"description" => $item->getDescription(),
+						"image" => $item->getImage(),
 						"subs" => $this->getSubsMenus($item->getId())
 				);
 			}
 		}
 	
+		return $content;
+	
+	}
+
+	public function getMenuById($id){
+
+		$content = false;
+
+		if(isset($id)){
+			$item = $this->findById($id);
+			
+
+			if($item){
+				$content = array(
+						"id" => $item->getId(),
+						"title" => $item->getTitle(),
+						"master" =>$item->getMaster(),
+						"description" => $item->getDescription(),
+						"image" => $item->getImage(),
+						"subs" => $this->getSubsMenus($item->getId())
+				);
+			}
+		}
+
 		return $content;
 	
 	}

@@ -6,7 +6,7 @@
 	  			<li <?php echo ($item['actions']) ? 'class="dropdown-submenu"' : ''; ?>>
 	  				<a href="<?php echo base_url();?><?php echo $item['controller']?>">
 	  					<i class="icon-xlarge icon-<?php echo $item['icon']?>"></i>
-	  					<span style="font-weight: bold"><?php echo $item['title']?></span>
+	  					<span><?php echo $item['title']?></span>
 	  				</a>
 	  				<?php if($item['actions']){ ?>
 				        <ul class="dropdown-menu">

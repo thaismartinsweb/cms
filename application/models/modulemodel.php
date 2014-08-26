@@ -31,10 +31,28 @@ class Modulemodel extends CMS_Model {
 	
 	private function getModuleAction(Module $module){
 		
-		$query = "select ma from entities\\moduleaction ma where ma.module_id = :module";
 		$args = array("module" => $module->getId());
+		$itens = $this->findBy($args, 'moduleaction');
 		
-		$itens = $this->executeQuery($query, $args, false, 'moduleaction');
+		$content = false;
+		
+		if($itens){
+			foreach($itens as $item){
+				$content[] = array(
+						"title" => $item->getTitle(),
+						"method" => $item->getMethod(),
+						"icon" => $item->getIcon()
+				); 
+			}
+		}
+
+		return $content;
+	}
+
+	private function getModuleByController($controller){
+
+		$args = array("control" => $controller);
+		$itens = $this->findBy($args);
 		
 		$content = false;
 		

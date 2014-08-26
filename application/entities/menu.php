@@ -20,7 +20,7 @@ class Menu
 	private $id;
 	
 	/**
-	 * @Column(type="integer", nullable=true)
+	 * @Column(type="integer", nullable=true, nullable=true)
 	 */
 	private $master_id;
 
@@ -30,9 +30,14 @@ class Menu
 	private $title;
 
 	/**
-	 * @Column(type="string", length=500)
+	 * @Column(type="string", length=500, nullable=true)
 	 */
-	private $content;
+	private $description;
+
+	/**
+	 * @Column(type="string", length=100, nullable=true)
+	 */
+	private $image;
 	
 	
 	public function setId($id){
@@ -43,11 +48,11 @@ class Menu
 		return $this->id;
 	}
 	
-	public function setMasterId($id){
+	public function setMaster($id){
 		$this->master_id = $id;
 	}
 	
-	public function getMasterId(){
+	public function getMaster(){
 		return $this->master_id;
 	}
 	
@@ -59,12 +64,20 @@ class Menu
 		return $this->title;
 	}
 	
-	public function setContent($content){
-		$this->content = $content;
+	public function setDescription($description){
+		$this->description = $description;
 	}
 	
-	public function getContent(){
-		return $this->content;
+	public function getDescription(){
+		return $this->description;
+	}
+	
+	public function setImage($image){
+		$this->image = $image;
+	}
+	
+	public function getImage(){
+		return $this->image;
 	}
 
 }

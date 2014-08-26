@@ -9,6 +9,7 @@ $lang['login'] = 'Login';
 
 // Home
 $lang['no_results'] = 'Nenhum resultado encontrado';
+$lang['no_item'] = 'Nenhum item cadastrado';
 $lang['last_content'] = 'Últimos Conteúdos';
 
 // Save / Edit

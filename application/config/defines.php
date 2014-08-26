@@ -24,6 +24,10 @@ define('WEBROOT_DIR', 'webroot/');
 define('CSS_DIR', WEBROOT_DIR .'css/');
 define('JS_DIR', WEBROOT_DIR . 'js/');
 define('IMAGES_DIR', WEBROOT_DIR . 'images/');
+define('ICONS_DIR', WEBROOT_DIR . 'icon/');
 
 define('UPLOAD_DIR', './public/');
 define('PUBLIC_DIR', 'public/');
+
+define('SUCCESS', 'success');
+define('DELETED', 'deleted');

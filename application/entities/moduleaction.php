@@ -20,9 +20,10 @@ class ModuleAction
 	private $id;
 
 	/**
-	 * @Column(type="integer")
+	 * @ManyToOne(targetEntity="entities\module")
+     * @JoinColumn(name="module_id", referencedColumnName="id")
 	 */
-	private $module_id;
+	private $module;
 	
 	/**
 	 * @Column(type="string", length=100)
@@ -47,12 +48,12 @@ class ModuleAction
 		return $this->id;
 	}
 
-	public function setModuleId($module_id){
-		$this->module_id = $module_id;
+	public function setModule($module){
+		$this->module_id = $module;
 	}
 
-	public function getModuleId(){
-		return $this->$module_id;
+	public function getModule(){
+		return $this->module;
 	}
 	
 	public function setTitle($title){

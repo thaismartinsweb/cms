@@ -1,6 +1,6 @@
 <section id="content">
 	<section class="main">
-		<h4 style="font-weight: bold"><i class="icon-large icon-<?php echo $icon ?>"></i><?php echo $title?></h4>
+		<h4 class="title-item"><i class="icon-large icon-<?php echo $icon ?>"></i><?php echo $title?></h4>
       	<div class="row-fluid span12 panel">
           	
           	<?php if(isset($error)){ ?>
@@ -31,20 +31,24 @@
             			<input type="text" placeholder="Título do Site" name="title" value="<?php echo $base['title']?>" class="bg-focus input-xlarge">
 					</div>
             	</div>
-            	
-				<div class="control-group">
+
+            	<div class="control-group">
 					<label class="control-label">Logo do Site</label>
 					<div class="controls media">
 						<div class="bg-light pull-left text-center thumb-image">
-							<?php if($base['logo']) {?>
-								<img src="<?php echo base_url() ?><?php echo PUBLIC_DIR ?>config/<?php echo $base['logo']?>" />
+							<?php if(isset($base['logo'])) {?>
+								<a href="<?php echo base_url() ?><?php echo PUBLIC_DIR ?>config/<?php echo $base['logo']?>" data-lightbox="<?php echo $base['logo']?>">
+									<img src="<?php echo base_url() ?><?php echo PUBLIC_DIR ?>config/<?php echo $base['logo']?>" />
+								</a>
 							<?php } else {?>
 								<i class="icon-user inline icon-light icon-3x m-t-large m-b-large"></i>
 							<?php } ?>
 						</div>
 						<div class="media-body">
 							<input type="file" title="Alterar" name="logo" class="btn btn-small btn-info m-b-small"><br>
-							<a class="btn btn-small btn-default" onclick="window.location='<?php echo base_url() ?><?php echo $controller ?>/remove'">Deletar</a>
+							<?php if(isset($base['logo'])) { ?>
+								<a class="btn btn-small btn-default" onclick="window.location='<?php echo base_url() ?><?php echo $controller ?>/remove">Deletar</a>
+							<?php } ?>
 						</div>
 					</div>
 				</div>

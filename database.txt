@@ -4,6 +4,7 @@ MENU
  id
  id_master
  title
+ description
  image
  
 CONTENT

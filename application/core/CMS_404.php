@@ -12,7 +12,7 @@ class CMS_404 extends CMS_Controller {
 		
 		$data['title'] = $this->lang->line('404_title');
 		$data['content'] = $this->lang->line('404_content');
-		
+
 		$this->load->library('template');
 		
 		$this->template->setViewAdmin($data['title'], '404', $data);

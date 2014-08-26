@@ -71,12 +71,28 @@ class CMS_Model extends CI_Model {
 		return $return;
 	}
 
+
+	public function findBy($args, $repository = false){
+	
+		$return = false;
+	
+		if(is_array($args)){
+			if($repository){
+				$return = $this->em->getRepository('entities\\' . $repository)->findBy($args);
+			} else {
+				$return = $this->repository->findBy($args);
+			}
+		}
+		
+		return $return;
+	}
+
 	public function save($entity){
 
 		if($this->isInstanceOf($entity)){
 			$this->em->persist($entity);
 		    $this->em->flush();
-		    return true;
+		    return $entity;
 		}
 		
 		return false;
@@ -87,7 +103,7 @@ class CMS_Model extends CI_Model {
 		if($this->isInstanceOf($entity)){
 			$this->em->merge($entity);
 			$this->em->flush();
-			return true;
+			return $entity;
 		}
 		
 		return false;
@@ -106,8 +122,9 @@ class CMS_Model extends CI_Model {
 	public function delete($entity){
 		
 		if($this->isInstanceOf($entity)){
-			$this->repository->remove($entity);
-			return $this->repository->flush();
+			$this->em->remove($entity);
+			$this->em->flush();
+			return true;
 		}
 		
 		return false;

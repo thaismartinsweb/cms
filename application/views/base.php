@@ -27,19 +27,28 @@
                     <label class="control-label">Email</label>
                     <div class="controls">
                       <input type="text" placeholder="Título do Site" class="bg-focus">
-				 	 </div>
+				 	          </div>
                   </div>
                   <!-- Input -->
                   
+                  <!-- TextArea-->
+                  <div class="control-group">
+                    <label class="control-label">Descrição do Menu</label>
+                    <div class="controls">
+                      <textarea placeholder="Resumo sobre o menu" name="content" class="span4" rows="5"><?php echo isset($base['description']) ? $base['content'] : '';?></textarea>
+                    </div>
+                  </div>
+                  <!-- TextArea-->
+
                   <!-- Select -->                 
                   <div class="control-group">
                     <label class="control-label">Account</label>
                     <div class="controls">
                       <select>
                       	<option value="1">Editor</option>
-						<option value="0">Admin</option>
-					  </select>
-					</div>
+						            <option value="0">Admin</option>
+          					  </select>
+          					</div>
                   </div>
                   <!-- Select --> 
                   
