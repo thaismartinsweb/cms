@@ -80,7 +80,7 @@ class Menu extends CMS_Controller {
 	public function edit($id, $msg = false){
 
 		$data = $this->getData();
-		$data['title'] .= ' | Editar Menu';
+		$data['title'] .= ' | Editar';
 		$data['base'] = $this->menumodel->getMenuById($id);
 		
 		if($msg){

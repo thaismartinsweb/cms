@@ -2,7 +2,7 @@
 
 use entities\Config;
 
-class Configmodel extends CMS_Model {
+class ConfigModel extends CMS_Model {
 
 	public function __construct(){
 		parent::__construct('config');

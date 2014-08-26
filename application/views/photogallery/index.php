@@ -21,8 +21,6 @@
 						<tr>
 							<th width="20"><input type="checkbox"></th>
 		                    <th><?php echo $lang['itens']?></th>
-		                    <th>Menu</th>
-		                    <th>Data da Criação</th>
 		                    <th><?php echo $lang['actions']?></th>
 		                </tr>
 					</thead>
@@ -32,8 +30,6 @@
 								<tr>
 									<td><input type="checkbox" name="content[]" value="<?php echo $item['id']?>"></td>
 				                    <td><a href="<?php echo base_url() ?><?php echo $controller ?>/edit/<?php echo $item['id']?>"><?php echo $item['title']?></a></td>
-				                    <td><?php echo $item['menu_title']?></td>
-				                    <td><?php echo $item['date']?></td>
 				                    <td>
 				                    	<a href="<?php echo base_url() ?><?php echo $controller ?>/edit/<?php echo $item['id']?>"><i class="icon icon-edit"></i></a>
 				                    	<a href="<?php echo base_url() ?><?php echo $controller ?>/remove/<?php echo $item['id']?>"><i class="icon icon-remove-sign"></i></a>

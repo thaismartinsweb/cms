@@ -16,6 +16,7 @@ class Cms extends CMS_Controller {
 			
 		$data['title'] = $this->title;
 		$data['icon'] = $this->icon;
+		$data['controller'] = 'content';
 		$data['last_content'] = $this->lang->line('last_content');
 		$data['lang']['no_results'] = $this->lang->line('no_results');
 	

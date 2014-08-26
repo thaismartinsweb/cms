@@ -1,6 +1,6 @@
 <?php
 
-class Typepagemodel extends CMS_Model {
+class TypePageModel extends CMS_Model {
 	
 	public function __construct(){
 		parent::__construct('typepage');

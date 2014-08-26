@@ -27,10 +27,11 @@ CONTENT
 PHOTO_GALLERY
  id
  title
+ order
 
 PHOTO
  id
- id_photo_gallery
+ photo_gallery_id
  title
  description
  image

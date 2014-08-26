@@ -101,6 +101,39 @@
 						</div>
 					</form>
 				</section>
+				
+				
+				<footer class="panel-footer">
+					<div class="row-fluid">
+				
+						<div class="span4 hidden-phone">
+							<select class="input-small inline m-b-none" style="width:130px">
+							<option>Selecionar...</option>
+							<option value="1">Deletar Selecionados</option>
+							</select>
+						</div>
+						
+						<div class="span4 text-center">
+							<small class="text-muted inline m-t-small m-b-small">Exibindo 20/30 de 50 itens</small>
+						</div>
+						
+						<div class="span4 text-right text-center-sm">
+							<div class="pagination pagination-small  m-b-none">    
+								<ul>
+								<li><a href="#"><i class="icon-chevron-left"></i></a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#"><i class="icon-chevron-right"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						
+					</div>
+				</footer>
+				
 			</div>
 		</div>
 	</section>

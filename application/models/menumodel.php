@@ -1,6 +1,6 @@
 <?php
 
-class Menumodel extends CMS_Model {
+class MenuModel extends CMS_Model {
 	
 	public function __construct(){
 		parent::__construct('menu');

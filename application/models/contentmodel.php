@@ -1,6 +1,6 @@
 <?php
 
-class Contentmodel extends CMS_Model {
+class ContentModel extends CMS_Model {
 
 	public function __construct(){
 		parent::__construct('content');
@@ -8,7 +8,7 @@ class Contentmodel extends CMS_Model {
 	
 	public function getAllContents(){
 		
-		$itens = $this->contentmodel->findAll();
+		$itens = $this->findAll();
 		$content = false;
 		
 		if($itens){

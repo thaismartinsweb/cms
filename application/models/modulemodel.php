@@ -2,7 +2,7 @@
 
 use entities\Module;
 
-class Modulemodel extends CMS_Model {
+class ModuleModel extends CMS_Model {
 	
 	public function __construct(){
 		parent::__construct('module');
