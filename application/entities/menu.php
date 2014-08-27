@@ -22,7 +22,7 @@ class Menu
 	/**
 	 * @Column(type="integer", nullable=true)
 	 */
-	private $master_id;
+	private $master;
 
 	/**
 	 * @Column(type="string", length=100)
@@ -53,12 +53,12 @@ class Menu
 		return $this->id;
 	}
 	
-	public function setMaster($id){
-		$this->master_id = $id;
+	public function setMaster($master){
+		$this->master = $master;
 	}
 	
 	public function getMaster(){
-		return $this->master_id;
+		return $this->master;
 	}
 	
 	public function setTitle($title){

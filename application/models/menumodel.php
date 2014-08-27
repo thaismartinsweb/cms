@@ -8,21 +8,14 @@ class MenuModel extends CMS_Model {
 	
 	public function getAllMenus(){
 		
-		$args = array('master_id' => 0);
+		$args = array('master' => 0);
 		$itens = $this->findBy($args);
 		$content = false;
-
+		
 		if($itens){
 			foreach($itens as $item){
-				$content[] = array(
-						"id" => $item->getId(),
-						"title" => $item->getTitle(),
-						"master" =>$item->getMaster(),
-						"description" => $item->getDescription(),
-						"image" => $item->getImage(),
-						"special" => $item->isSpecial(),
-						"subs" => $this->getSubsMenus($item->getId())
-				);
+				$content[] = $this->builder->getArray($item);
+				$content[]['subs'] = $this->getSubsMenus($item->getId());
 			}
 		}
 		

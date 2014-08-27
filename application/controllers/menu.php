@@ -6,13 +6,6 @@ class Menu extends CMS_Controller {
 		parent::__construct(false);
 		$this->load->model('menumodel');
 		$this->load->model('moduleactionmodel');
-
-		$file['upload_path'] = UPLOAD_DIR . 'menu';
-		$file['allowed_types'] = 'gif|jpg|png';
-		$file['max_width']  = '1024';
-		$file['max_height']  = '768';
-			
-		$this->load->library('upload', $file);
 	}
 	
 	public function index(){
@@ -20,18 +13,14 @@ class Menu extends CMS_Controller {
 		$data = $this->getData();
 		$data['itens'] = $this->menumodel->getAllMenus();
 		$data['menu'] = $this->moduleactionmodel->getAllActionsByModule('menu');
-		$data['lang']['no_results'] = $this->lang->line('no_results');
-		$data['lang']['last_content'] = $this->lang->line('last_content');
 
-		$this->template->setViewAdmin($this->title, $this->controller.'/index', $data);
+		$this->renderAdmin('index', $data);
 	}
 
 	public function fresh(){
-
+		
 		$data = $this->getData();
-		$data['title'] .= ' | Adicionar Novo';
-		$data['base'] = array();
-		$this->template->setViewAdmin($this->title, $this->controller.'/edit', $data);
+		$this->renderAdmin('edit', $data);
 	}
 	
 	
@@ -42,27 +31,12 @@ class Menu extends CMS_Controller {
 			$this->load->entities('menu');
 			
 			$item = new entities\Menu();
-			$item->setTitle($this->input->post('title'));
-			$item->setMaster($this->input->post('master'));
-			$item->setDescription($this->input->post('description'));
-			$item->setSpecial($this->input->post('special'));
+			$this->builder->setPost($item);
 			
-			if($this->input->post('id')){
-				$item->setId($this->input->post('id'));
-			}	
-
-			if(!empty($_FILES['image']['name'])){
-				if($this->upload->do_upload('image')){
-					$file = $this->upload->data();
-					$item->setImage($file['file_name']);
-				} else {
-					$data['error'][] = $this->upload->display_errors();
-				}
-			}
-
 			$saved = $this->menumodel->saveOrUpdate($item);
 			$data = $this->getData();
 			$data['base'] = $this->menumodel->getMenuById($saved->getId());
+			
 
 			if($saved){
 				redirect($this->controller.'/edit/' . $saved->getId() . '/' . SUCCESS);
@@ -131,10 +105,6 @@ class Menu extends CMS_Controller {
 	
 	public function getData(){
 
-		$data['title'] = $this->title;
-		$data['icon']  = $this->icon;
-		$data['controller'] = $this->controller;
-		
 		$data['lang']['no_item'] = $this->lang->line('no_item');
 		$data['lang']['change'] = $this->lang->line('change');
 		$data['lang']['delete'] = $this->lang->line('delete');
@@ -144,7 +114,10 @@ class Menu extends CMS_Controller {
 		$data['lang']['actions'] = $this->lang->line('actions');
 		$data['lang']['success'] = $this->lang->line('success');
 		$data['lang']['error'] = $this->lang->line('error');
+		$data['lang']['no_results'] = $this->lang->line('no_results');
+		$data['lang']['last_content'] = $this->lang->line('last_content');
 		
+		$data['controller'] = $this->controller;
 		$data['menu_parent'] = $this->menumodel->getAllMenus();
 
 		return $data;

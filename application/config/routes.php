@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "cms";
-$route['404_override'] = 'CMS_404';
+$route['404_override'] = '';
 
 $route['home'] = "home";
 

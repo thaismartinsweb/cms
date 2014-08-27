@@ -13,14 +13,12 @@ class Cms extends CMS_Controller {
 		
 		$data['itens'] = $this->contentmodel->getAllContents();		
 		$data['menu'] = $this->modulemodel->getAllModules();	
-			
-		$data['title'] = $this->title;
-		$data['icon'] = $this->icon;
+	
 		$data['controller'] = 'content';
 		$data['last_content'] = $this->lang->line('last_content');
 		$data['lang']['no_results'] = $this->lang->line('no_results');
 	
-		$this->template->setViewAdmin($this->title, 'cms/index', $data);
+		$this->renderAdmin('index', $data);
 	}
 	
 }

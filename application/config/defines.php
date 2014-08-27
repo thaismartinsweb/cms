@@ -14,6 +14,7 @@ define('LIB_DIR', APP_DIR . 'libraries/');
 
 define('COMPOSER_DIR', LIB_DIR . 'vendors/');
 define('DOCTRINE_DIR', COMPOSER_DIR . 'doctrine/');
+define('DOCTRINE_NAMESPACE', 'entities');
 
 define('CONTROLLER_DIR', APP_DIR . 'controller/');
 define('VIEW_DIR', APP_DIR . 'views/');

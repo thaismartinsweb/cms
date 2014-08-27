@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" class="no-touch">
-<head>
-<meta charset="iso-8859-1">
-<title>CMS | <?php echo $page_title ?></title>
-<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script src="https://code.jquery.com/jquery-git1.min.js"></script>
 <script src="<?php echo base_url() ?><?php echo JS_DIR ?>lightbox.min.js"></script>
 <script src="<?php echo base_url() ?><?php echo JS_DIR ?>tinymce/tinymce.min.js"></script>
@@ -33,5 +26,3 @@ tinymce.init({
     toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link jbimages"    
 });
 </script>  
-</head>
-<body class="navbar-fixed">

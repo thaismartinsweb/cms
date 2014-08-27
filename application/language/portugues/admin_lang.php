@@ -29,5 +29,5 @@ $lang['delete'] = 'Deletar';
 
 // 404
 $lang['404_title'] = 'Página Não Encontrada';
-$lang['404_content'] = 'Erro ao buscar o conteúdo solicitado. Por favor, verifique o endereço digitado';
+$lang['404_content'] = 'Erro ao buscar o conteúdo solicitado.<br/>Por favor, verifique o endereço digitado';
 

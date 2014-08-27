@@ -8,23 +8,10 @@ class ConfigModel extends CMS_Model {
 		parent::__construct('config');
 	}
 
-	public function getConfigData(){
+	public function getAllData(){
 		
-		$item = $this->findById(1);
-		$content = false;
-		
-		if($item){
-			$content = array(
-					"id" => $item->getId(),
-					"title" => $item->getTitle(),
-					"logo" =>$item->getLogo(),
-					"email" => $item->getEmail(),
-					"contact" => $item->getContact(),
-					"address" => $item->getAddress()
-			);
-		}
-		
-		return $content;
+		$item = $this->findById(1);		
+		return $this->builder->objectToArray($item);
 	}
 	
 }

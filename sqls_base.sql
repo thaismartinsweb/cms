@@ -1,3 +1,7 @@
+drop database admin;
+create database admin;
+use admin;
+
 select * from user;
 insert into user values(null, 1, 'Teste Thais 2', 'thais@thais', 'admin', '123', '');
 

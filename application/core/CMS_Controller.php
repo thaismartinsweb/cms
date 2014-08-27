@@ -35,7 +35,36 @@ class CMS_Controller extends CI_Controller {
 				$this->icon  = $module->getIcon(); 
 			}
 		}
+	}
+	
+	protected function buildMessage($saved, $delete = false){
 		
+		if($saved){
+			if($delete){
+				$message['success'] = $this->lang->line('delete_success');
+			} else {
+				$message['success'] = '';
+			}
+		} else {
+			if($delete){
+				$message['error'] = $this->lang->line('delete_error');
+			} else {
+				$message['error'] = '';
+			}	
+		}
+		
+		return $message;
+	}
+	
+	protected function renderAdmin($page, $data, $message = null){
+
+		$configView = array("title"	=> $this->title,
+				 			 "icon"	=> $this->icon,
+							 "page"	=> $this->controller.'/'.$page,
+							 "data"	=> $data,
+							 "message" => $message);
+		
+		$this->template->setViewAdmin($configView);
 	}
 
 }

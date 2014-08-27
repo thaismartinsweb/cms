@@ -9,30 +9,48 @@ class Template {
 	}
 	
 	public function setViewLogin($view, $data){
-		 echo 'view login';
+		 
 	}
 	
-	public function setViewAdmin($pageTitle, $view, $dataView){
-	
-		// Insere paginas padrões da tela de admin
-		$data['header'] = $this->ci->load->view('admin/header', array('page_title' => $pageTitle), true);
-		$data['top'] = $this->ci->load->view('admin/top', null, true);
-
-		$side['itens'] = $this->getModuleSide();
+	public function setViewAdmin($args){
 		
-		$data['side'] = $this->ci->load->view('admin/side', $side, true);
-		$data['footer'] = $this->ci->load->view('admin/footer', null, true);
-	
+		// Gera dados
+		$error['content'] = $this->ci->lang->line('404_content');
+		$side['itens'] = $this->getModuleSide();
+		$data['page_title'] = $args['title'];
+		$data['title'] = $args['title'];
+		$data['icon'] = $args['icon'];
+
 		// Insere o conteúdo
-		if(!empty($view)){
-			$data['content'] = $this->ci->load->view($view, $dataView, true);
+		if($this->existsView($args['page'])){
+			$data['content'] = $this->ci->load->view($args['page'], $args['data'], true);
 		} else {
-			$data['content'] = $this->ci->load->view('404', '', true);
+			$data['page_title'] = $this->ci->lang->line('404_title');
+			$data['title'] = $this->ci->lang->line('404_title');
+			$data['icon'] = 'info';
+			$data['content'] = $this->ci->load->view('404', $error, true);
 		}
+		
+		// Insere paginas padrões da tela de admin
+		$data['head'] = $this->ci->load->view('admin/head', null, true);
+		$data['top'] = $this->ci->load->view('admin/top', null, true);
+		$data['side'] = $this->ci->load->view('admin/side', $side, true);
+		$data['message'] = $this->ci->load->view('admin/message', $args, true);
+		$data['footer'] = $this->ci->load->view('admin/footer', null, true);
 
 		// Executa Template
 		$this->ci->load->view('admin', $data);
+	}
 	
+	private function existsView($view){
+		
+		$file = VIEW_DIR . $view . EXT;;
+		
+		if(file_exists($file)){
+			return true;
+		}
+		
+		return false;
 	}
 	
 	private function getModuleSide(){
