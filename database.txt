@@ -3,9 +3,17 @@ MODELO - BANCO DE DADOS
 MENU
  id
  master_id
+ type_menu
  title
  description
  image
+ special
+ exibition
+ 
+ TYPE_MENU
+  id
+  title
+  controller
  
 TYPE_PAGE
  id

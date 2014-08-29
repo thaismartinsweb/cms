@@ -29,9 +29,9 @@ class TypePage
 	private $description;
 	
 	/**
-	 * @Column(type="string", length=2000)
+	 * @Column(type="string", length=100)
 	 */
-	private $content;
+	private $page;
 	
 	/**
 	 * @Column(type="string", length=100, nullable=true)
@@ -62,12 +62,12 @@ class TypePage
 		return $this->description;
 	}
 	
-	public function setContent($content){
-		$this->content = $content;
+	public function setPage($page){
+		$this->page = $page;
 	}
 	
-	public function getContent(){
-		return $this->content;
+	public function getPage(){
+		return $this->page;
 	}
 	
 	public function setImage($image){

@@ -14,7 +14,7 @@ select * from module;
 drop table module;
 insert into module values
 (null, 'Home', 'cms', 'home', 'primary'),
-(null, 'Dados do Site', 'config', 'wrench', 'success'),
+(null, 'Dados do Site', 'config', 'cogs', 'success'),
 (null, 'Menu', 'menu', 'tasks', 'info'),
 (null, 'Content', 'content', 'quote-left', 'inverse'),
 (null, 'Galeria de Fotos', 'photogallery', 'camera-retro', 'warning'),
@@ -22,7 +22,11 @@ insert into module values
 (null, 'Galeria de Videos', 'videogallery', 'film', 'primary'),
 (null, 'Videos', 'photo', 'play', 'success'),
 (null, 'Categoria de Produtos', 'productcategory', 'tags', 'info'),
-(null, 'Produtos', 'product', 'glass', 'inverse');
+(null, 'Produtos', 'product', 'glass', 'inverse'),
+(null, 'Contatos', 'form', 'envelope-alt', 'warning'),
+(null, 'Ajuda', 'help', 'info', 'danger');
+
+update module set title = 'Contatos' where id = 11;
 
 update module set controller = 'cms' where id = 1;
 
@@ -46,12 +50,17 @@ insert into module_action values
 (null, 10, 'Gerenciar Todos','index', 'pencil-square-o'),
 (null, 10, 'Adicionar Novo', 'fresh', 'plus-square-o');
 
-insert into type_page values
-(null, 'Página com imagem destaque no topo', 'Modelo de página com uma imagem grande em destaque no topo do página', '', 'page_top.png');
+select * from type_menu;
+insert into type_menu values
+(null, 'Conteúdo', 'conteudo'),
+(null, 'Notícias', 'noticias'),
+(null, 'Produtos', 'produtos'),
+(null, 'Galeria de Fotos', 'fotos'),
+(null, 'Galeria de Videos', 'videos'),
+(null, 'Contato', 'contato');
 
-update type_page
-set image = 'page_top.png'
-where id = 1;
+insert into type_page values
+(null, 'Página com imagem destaque no topo', 'Modelo de página com uma imagem grande em destaque no topo do página', 'simple_page_top', 'page_top.png');
 
 select * from config;
 select * from menu;
@@ -59,3 +68,4 @@ select * from content;
 select * from type_page;
 
 drop table content;
+drop table menu;

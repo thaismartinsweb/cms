@@ -27,7 +27,7 @@ class Template {
 		} else {
 			$data['page_title'] = $this->ci->lang->line('404_title');
 			$data['title'] = $this->ci->lang->line('404_title');
-			$data['icon'] = 'info';
+			$data['icon'] = 'warning-sign';
 			$data['content'] = $this->ci->load->view('404', $error, true);
 		}
 		

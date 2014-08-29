@@ -13,7 +13,7 @@
 		<div class="alert alert-success">
 			<button data-dismiss="alert" class="close" type="button"><i class="icon-remove"></i></button>
 			<i class="icon-ok-sign icon-large"></i>
-			<strong style="text-transform:uppercase;"><?php echo $lang['success']?></strong> <?php echo $success ?>
+			<strong style="text-transform:uppercase;"><?php echo $lang['success']?></strong> <?php echo $message['success'] ?>
 		</div>
 	<?php } ?>
 <?php } ?>

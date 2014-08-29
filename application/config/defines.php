@@ -32,3 +32,7 @@ define('PUBLIC_DIR', 'public/');
 
 define('SUCCESS', 'success');
 define('DELETED', 'deleted');
+
+define('GET_METHOD', 'get');
+define('SET_METHOD', 'set');
+define('IMAGE_METHOD', SET_METHOD . 'Image');

@@ -57,6 +57,9 @@ class Config extends CMS_Controller {
 		$data['lang']['change'] = $this->lang->line('change');
 		$data['lang']['delete'] = $this->lang->line('delete');
 		$data['lang']['save'] = $this->lang->line('save');
+		$data['lang']['success'] = $this->lang->line('success');
+		$data['lang']['error'] = $this->lang->line('error');
+		
 		$data['base'] = $this->configmodel->getAllData();
 
 		return $data;

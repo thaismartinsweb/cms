@@ -4,8 +4,7 @@ class Menu extends CMS_Controller {
 	
 	public function __construct(){
 		parent::__construct(false);
-		$this->load->model('menumodel');
-		$this->load->model('moduleactionmodel');
+		$this->load->model(array('menumodel', 'typemenumodel','moduleactionmodel'));
 	}
 	
 	public function index(){
@@ -31,7 +30,7 @@ class Menu extends CMS_Controller {
 			$this->load->entities('menu');
 			
 			$item = new entities\Menu();
-			$this->builder->setPost($item);
+			$this->builder->postToObject($item);
 			
 			$saved = $this->menumodel->saveOrUpdate($item);
 			$data = $this->getData();
@@ -118,7 +117,8 @@ class Menu extends CMS_Controller {
 		$data['lang']['last_content'] = $this->lang->line('last_content');
 		
 		$data['controller'] = $this->controller;
-		$data['menu_parent'] = $this->menumodel->getAllMenus();
+		$data['menu_parent'] = $this->menumodel->getAllData();
+		$data['type_menu'] = $this->typemenumodel->getAllData();
 
 		return $data;
 		

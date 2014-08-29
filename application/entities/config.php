@@ -27,7 +27,7 @@ class Config
 	/**
 	 * @Column(type="string", length=100, nullable=true)
 	 */
-	private $logo;
+	private $image;
 	
 	/**
 	 * @Column(type="string", length=100)
@@ -60,12 +60,12 @@ class Config
 		return $this->title;
 	}
 
-	public function setLogo($logo){
-		$this->logo = $logo;
+	public function setImage($image){
+		$this->image = $image;
 	}
 
-	public function getLogo(){
-		return $this->logo;
+	public function getImage(){
+		return $this->image;
 	}
 	
 	public function setEmail($email){

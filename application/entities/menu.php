@@ -20,9 +20,16 @@ class Menu
 	private $id;
 	
 	/**
-	 * @Column(type="integer", nullable=true)
+	 * @ManyToMany(targetEntity="entities\menu")
+     * @JoinColumn(name="menu_id", referencedColumnName="id", nullable=true)
 	 */
-	private $master;
+	private $menu;
+	
+	/**
+	 * @ManyToOne(targetEntity="entities\typemenu")
+     * @JoinColumn(name="type_menu_id", referencedColumnName="id", nullable=true)
+	 */
+	private $type_menu;
 
 	/**
 	 * @Column(type="string", length=100)
@@ -44,6 +51,11 @@ class Menu
 	 */
 	private $special;
 	
+	/**
+	 * @Column(type="integer", length=1)
+	 */
+	private $exibition;
+	
 	
 	public function setId($id){
 		$this->id = $id;
@@ -53,12 +65,20 @@ class Menu
 		return $this->id;
 	}
 	
-	public function setMaster($master){
-		$this->master = $master;
+	public function setMenu($menu){
+		$this->menu = $menu;
 	}
 	
-	public function getMaster(){
-		return $this->master;
+	public function getMenu(){
+		return $this->menu;
+	}
+	
+	public function setTypeMenu($type_menu){
+		$this->type_menu = $type_menu;
+	}
+	
+	public function getTypeMenu(){
+		return $this->type_menu;
 	}
 	
 	public function setTitle($title){
@@ -89,8 +109,16 @@ class Menu
 		$this->special = $special;
 	}
 	
-	public function isSpecial(){
+	public function getSpecial(){
 		return $this->special;
+	}
+	
+	public function setExibition($exibition){
+		$this->exibition = $exibition;
+	}
+	
+	public function getExibition(){
+		return $this->exibition;
 	}
 
 }

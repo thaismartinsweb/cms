@@ -17,7 +17,7 @@ class Builder {
 			
 			if($this->allowArray($rClass)){
 				foreach($rClass->getProperties() as $property){
-					$array[] = $this->getArray($entity, $rClass, $property);
+					$array[$property->getName()] = $this->getArray($entity, $rClass, $property);
 				}
 			}
 			
@@ -32,12 +32,12 @@ class Builder {
 		
 		if($this->allowPost($rClass)){
 			foreach($rClass->getProperties() as $property){
-				$this->setPost($entity, $rClass, $property);
+				$this->buildPost($entity, $rClass, $property);
 			}
 		}
 	}
 	
-	private function setPost($entity, $class, $property){
+	private function buildPost($entity, $class, $property){
 		
 		$method = $this->buildMethod($property, 'set');
 		$rMethod = $class->getMethod($method);
@@ -46,13 +46,44 @@ class Builder {
 			if($method == IMAGE_METHOD){
 				$this->setImage($entity);
 			} else {
-				$post = $this->ci->input->post($property->getName());
-				
-				if($post){
-					$entity->$method($post);
-				}
+				$this->setPost($entity, $property, $method);
 			}
 		}
+	}
+	
+	private function setPost($entity, $property, $method){
+		
+		$post = $this->ci->input->post($property->getName());
+		
+		if(!empty($post)){
+			if($this->isEntity($property)){
+				$this->setEntity($entity, $method, $property, $post);
+			} else {
+				$entity->$method($post);
+			}
+		}
+	}
+	
+	private function setEntity($entity, $method, $property, $post){
+		
+		$model = str_replace('_', '', $property->getName()).'model';
+		
+		if($this->ci->load->model($model)){
+			$subEntity = $this->ci->$model->findById($post);
+			$entity->$method($subEntity);
+		}
+
+	}
+	
+	private function isEntity($property){
+		
+		$file = ENTITIES_DIR . str_replace('_', '', $property->getName()). EXT;
+
+		if(is_file($file)){
+			return true;
+		}
+		
+		return false;
 	}
 	
 	private function getArray($entity, $class, $property){
@@ -95,9 +126,9 @@ class Builder {
 			$this->ci->load->library('upload', $file);
 			
 			
-			if($this->upload->do_upload('image')){
+			if($this->ci->upload->do_upload('image')){
 				$file = $this->ci->upload->data();
-				$entity->setLogo($file['file_name']);
+				$entity->setImage($file['file_name']);
 			} else {
 				$this->errors[] = $this->ci->upload->display_errors();
 			}

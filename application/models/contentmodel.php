@@ -46,7 +46,7 @@ class ContentModel extends CMS_Model {
 					"image"   => $item->getImage(),
 					"date"    => $item->getDateCreated(),
 					"published" => $item->getPublished(),
-					"special" => $item->isSpecial()
+					"special" => $item->getSpecial()
 			);
 		}
 		

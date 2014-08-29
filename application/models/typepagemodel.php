@@ -6,25 +6,10 @@ class TypePageModel extends CMS_Model {
 		parent::__construct('typepage');
 	}
 	
-	public function getAllPages(){
+	public function getAllData(){
 		
 		$itens = $this->findAll();
-		$content = false;
-
-		if($itens){
-			foreach($itens as $item){
-				$content[] = array(
-						"id" => $item->getId(),
-						"title" => $item->getTitle(),
-						"description" => $item->getDescription(),
-						"content" => $item->getContent(),
-						"image" => $item->getImage()
-				);
-			}
-		}
-		
-		return $content;
-		
+		return $this->builder->objectToArray($item);
 	}
 	
 	

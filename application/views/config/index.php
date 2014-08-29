@@ -12,17 +12,17 @@
 <label class="control-label">Logo do Site</label>
 <div class="controls media">
 <div class="bg-light pull-left text-center thumb-image">
-<?php if(isset($base['logo'])) {?>
-<a href="<?php echo base_url() ?><?php echo PUBLIC_DIR ?><?php echo $controller ?>/<?php echo $base['logo']?>" data-lightbox="<?php echo $base['logo']?>">
-<img src="<?php echo base_url() ?><?php echo PUBLIC_DIR ?><?php echo $controller ?>/<?php echo $base['logo']?>" />
+<?php if(isset($base['image'])) {?>
+<a href="<?php echo base_url() ?><?php echo PUBLIC_DIR ?><?php echo $controller ?>/<?php echo $base['image']?>" data-lightbox="<?php echo $base['image']?>">
+<img src="<?php echo base_url() ?><?php echo PUBLIC_DIR ?><?php echo $controller ?>/<?php echo $base['image']?>" />
 </a>
 <?php } else {?>
 <i class="icon-user inline icon-light icon-3x m-t-large m-b-large"></i>
 <?php } ?>
 </div>
 <div class="media-body">
-<input type="file" title="<?php echo $lang['change']?>" name="logo" class="btn btn-small btn-info m-b-small"><br>
-<?php if(isset($base['logo'])) { ?>
+<input type="file" title="<?php echo $lang['change']?>" name="image" class="btn btn-small btn-info m-b-small"><br>
+<?php if(isset($base['image'])) { ?>
 <a class="btn btn-small btn-default" onclick="window.location='<?php echo base_url() ?><?php echo $controller ?>/remove"><?php echo $lang['delete']?></a>
 <?php } ?>
 </div>
