@@ -24,9 +24,18 @@ Acessar a pasta /var/www/admin/application/libraries/vendors/bin
 	php doctrine orm:generate-entities --generate-annotations="1" ../../../entities
 
 4. Mudar autoload
-
+	@include_once '/var/www/admin/application/libraries/vendors/autoload.php';
+	
 5. Criar cli-config.php
-
+	mkdir config
+	gedit cli-config.php
+	
+		require '../../../config/defines.php';
+		require '../../doctrine.php';
+		
+		$doctrine = new Doctrine();
+		return $doctrine->helperSet;
+	
 
 PASTAS
 1. Alterar Permissão

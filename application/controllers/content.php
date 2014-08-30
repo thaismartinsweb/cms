@@ -7,12 +7,6 @@ class Content extends CMS_Controller {
 		
 		$this->load->model(array('moduleactionmodel', 'menumodel', 'contentmodel', 'typepagemodel'));
 
-		$file['upload_path'] = UPLOAD_DIR . 'content';
-		$file['allowed_types'] = 'gif|jpg|png';
-		$file['max_width']  = '1024';
-		$file['max_height']  = '768';
-			
-		$this->load->library('upload', $file);
 	}
 	
 	public function index(){
@@ -20,18 +14,14 @@ class Content extends CMS_Controller {
 		$data = $this->getData();
 		$data['itens'] = $this->contentmodel->getAllContents();
 		$data['menu'] = $this->moduleactionmodel->getAllActionsByModule('menu');
-		$data['lang']['no_results'] = $this->lang->line('no_results');
-		$data['lang']['last_content'] = $this->lang->line('last_content');
-		
-		$this->template->setViewAdmin($this->title, $this->controller.'/index', $data);
+
+		$this->renderAdmin('index', $data);
 	}
 	
 	public function fresh(){
 	
 		$data = $this->getData();
-		$data['title'] .= ' | Adicionar Novo';
-		$data['base'] = array();
-		$this->template->setViewAdmin($this->title, $this->controller.'/edit', $data);
+		$this->renderAdmin('edit', $data);
 	}
 	
 	public function edit($id, $msg = false){
@@ -123,9 +113,12 @@ class Content extends CMS_Controller {
 		$data['lang']['actions'] = $this->lang->line('actions');
 		$data['lang']['success'] = $this->lang->line('success');
 		$data['lang']['error'] = $this->lang->line('error');
+		
+		$data['lang']['no_results'] = $this->lang->line('no_results');
+		$data['lang']['last_content'] = $this->lang->line('last_content');
 	
-		$data['menu'] = $this->menumodel->getAllMenus();
-		$data['pages'] = $this->typepagemodel->getAllPages();
+		$data['menu'] = $this->menumodel->getAllData();
+		$data['pages'] = $this->typepagemodel->getAllData();
 	
 		return $data;
 	

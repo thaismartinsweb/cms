@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-touch">
 	<head>
-		<meta charset="iso-8859-1">
+		<meta charset="<?php echo CHARSET ?>">
 		<title>CMS | <?php echo $page_title ?></title>
 		<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

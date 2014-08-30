@@ -20,10 +20,15 @@ class Menu
 	private $id;
 	
 	/**
-	 * @ManyToMany(targetEntity="entities\menu")
-     * @JoinColumn(name="menu_id", referencedColumnName="id", nullable=true)
+	 * @OneToMany(targetEntity="entities\menu", mappedBy="master")
 	 */
-	private $menu;
+	private $children;
+	
+	/**
+	 * @ManyToOne(targetEntity="entities\menu", inversedBy="children")
+     * @JoinColumn(name="master_id", referencedColumnName="id", nullable=true)
+	 */
+	private $master;
 	
 	/**
 	 * @ManyToOne(targetEntity="entities\typemenu")
@@ -65,12 +70,12 @@ class Menu
 		return $this->id;
 	}
 	
-	public function setMenu($menu){
-		$this->menu = $menu;
+	public function setMaster($master){
+		$this->master = $master;
 	}
 	
-	public function getMenu(){
-		return $this->menu;
+	public function getMaster(){
+		return $this->master;
 	}
 	
 	public function setTypeMenu($type_menu){

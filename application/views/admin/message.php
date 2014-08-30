@@ -1,6 +1,6 @@
 <?php if(isset($message)){ ?>
-	<?php if(isset($message['error'])){ ?>
-		<?php foreach($error as $item) {?>
+	<?php if(isset($message['error']) && !empty($message['error'])){ ?>
+		<?php foreach($message['error'] as $item) {?>
 			<div class="alert alert-danger">
 				<button data-dismiss="alert" class="close" type="button"><i class="icon-remove"></i></button>
 				<i class="icon-ban-circle icon-large"></i>
@@ -9,7 +9,7 @@
 		<?php } ?>
 	<?php } ?>
           	
-	<?php if(isset($message['success'])){?>
+	<?php if(isset($message['success']) && !empty($message['success'])){?>
 		<div class="alert alert-success">
 			<button data-dismiss="alert" class="close" type="button"><i class="icon-remove"></i></button>
 			<i class="icon-ok-sign icon-large"></i>

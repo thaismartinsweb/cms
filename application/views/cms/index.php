@@ -4,7 +4,7 @@
 		<?php foreach($menu as $item) { ?>
 			<a class="btn btn-<?php echo $item['color']?> btn-circle" href="<?php echo base_url() . $item['controller']?>">
 				<i class="icon-<?php echo $item['icon']?>"></i>
-				<?php echo $item['title']?>
+				<span><?php echo $item['title']?></span>
 			</a>
 		<?php } ?>
 	<?php } ?>

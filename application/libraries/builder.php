@@ -40,11 +40,11 @@ class Builder {
 	private function buildPost($entity, $class, $property){
 		
 		$method = $this->buildMethod($property, 'set');
-		$rMethod = $class->getMethod($method);
 		
-		if($this->existsData($class, $property, $rMethod)){
+		
+		if($this->existsData($class, $property, $method)){
 			if($method == IMAGE_METHOD){
-				$this->setImage($entity);
+				$this->setImage($entity, $class);
 			} else {
 				$this->setPost($entity, $property, $method);
 			}
@@ -89,9 +89,8 @@ class Builder {
 	private function getArray($entity, $class, $property){
 		
 		$method = $this->buildMethod($property, 'get');
-		$rMethod = $class->getMethod($method);
 		
-		if($this->existsData($class, $property, $rMethod)){
+		if($this->existsData($class, $property, $method)){
 			return $entity->$method();
 		}
 		
@@ -114,17 +113,17 @@ class Builder {
 		return $method;
 	}
 	
-	private function setImage($entity){
+	private function setImage($entity, $class){
 		
 		if(!empty($_FILES['image']['name'])){
 			
-			$file['upload_path'] = UPLOAD_DIR . 'config';
+			$path = str_replace(DOCTRINE_NAMESPACE . '\\', '', strtolower($class->getName()));
+			$file['upload_path'] = UPLOAD_DIR . $path;
 			$file['allowed_types'] = 'gif|jpg|png';
 			$file['max_width']  = '1024';
 			$file['max_height']  = '768';
-				
+
 			$this->ci->load->library('upload', $file);
-			
 			
 			if($this->ci->upload->do_upload('image')){
 				$file = $this->ci->upload->data();
@@ -158,9 +157,13 @@ class Builder {
 	
 	private function existsData($class, $property, $method){
 	
-		if($class->hasProperty($property->getName()) && $class->hasMethod($method->getName())
-		&& $method->isPublic()){
-			return true;
+		if($class->hasProperty($property->getName()) && $class->hasMethod($method)){
+			
+			$rMethod = $class->getMethod($method);
+			
+			if($rMethod->isPublic()){
+				return true;
+			}
 		}
 	
 		return false;

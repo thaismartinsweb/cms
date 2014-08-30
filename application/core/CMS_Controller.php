@@ -43,13 +43,13 @@ class CMS_Controller extends CI_Controller {
 			if($delete){
 				$message['success'] = $this->lang->line('delete_success');
 			} else {
-				$message['success'] = $this->lang->line('save_success');;
+				$message['success'] = $this->lang->line('save_success');
 			}
 		} else {
 			if($delete){
-				$message['error'] = $this->lang->line('delete_error');
+				$message['error'][] = $this->lang->line('delete_error');
 			} else {
-				$message['error'] = $this->lang->line('save_error').' '.$this->lang->line('check_fields');;
+				$message['error'][] = $this->lang->line('save_error').' '.$this->lang->line('check_fields');;
 			}	
 		}
 		
@@ -63,7 +63,7 @@ class CMS_Controller extends CI_Controller {
 							 "page"	=> $this->controller.'/'.$page,
 							 "data"	=> $data,
 							 "message" => $message);
-		
+
 		$this->template->setViewAdmin($configView);
 	}
 

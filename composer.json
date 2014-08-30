@@ -7,6 +7,8 @@
     "require":
     {
     	 "doctrine/orm": "*",
+    	 "doctrine/doctrine-fixtures-bundle": "*",
+    	 "doctrine/data-fixtures": "*",
     	 "phpunit/phpunit": "4.2.*"
     },
     

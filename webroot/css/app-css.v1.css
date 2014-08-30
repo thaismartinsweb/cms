@@ -1623,7 +1623,8 @@ select,textarea,input[type="text"],input[type="password"],input[type="datetime"]
 .dropup .btn-white .caret,.dropup .btn-default .caret{border-bottom-color:#656565}
 .btn>i{line-height:1.428571429;}
 .btn-mini{padding:3px 6px;font-size:10.5px;line-height:1.1;border-radius:3px;}
-.btn.btn-circle,.btn.btn-circle.disabled,.btn.btn-circle.disabled:hover{text-shadow:none;padding:2px 5px;box-shadow:none;border:none;background:transparent;color:#3a5a7a;font-weight:300;transition:none;}
+.btn.btn-circle,.btn.btn-circle.disabled,.btn.btn-circle.disabled:hover{height:120px;width:80px;text-shadow:none;padding:2px 5px;box-shadow:none;border:none;background:transparent;color:#3a5a7a;font-weight:300;transition:none;}
+.btn.btn-circle span,.btn.btn-circle.disabled span,.btn.btn-circle.disabled:hover span{height:40px;}
 .btn.btn-circle.disabled>i{color:#fff}
 .btn.btn-circle.disabled,.btn.btn-circle.disabled:hover{color:#999}
 .btn.btn-circle:hover,.btn.btn-circle:active,.btn.btn-circle.active{box-shadow:none;background:transparent;}

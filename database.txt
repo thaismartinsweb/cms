@@ -2,7 +2,7 @@ MODELO - BANCO DE DADOS
 
 MENU
  id
- master_id
+ master
  type_menu
  title
  description

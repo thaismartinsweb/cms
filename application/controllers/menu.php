@@ -7,13 +7,19 @@ class Menu extends CMS_Controller {
 		$this->load->model(array('menumodel', 'typemenumodel','moduleactionmodel'));
 	}
 	
-	public function index(){
+	public function index($message = false){
 		
 		$data = $this->getData();
-		$data['itens'] = $this->menumodel->getAllMenus();
+		$data['itens'] = $this->menumodel->getAllData();
 		$data['menu'] = $this->moduleactionmodel->getAllActionsByModule('menu');
+		
+		if($message){
+			if($message ==  DELETED){
+				$message['success'] = $this->lang->line('delete_success');
+			}
+		}
 
-		$this->renderAdmin('index', $data);
+		$this->renderAdmin('index', $data, $message);
 	}
 
 	public function fresh(){
@@ -31,41 +37,31 @@ class Menu extends CMS_Controller {
 			
 			$item = new entities\Menu();
 			$this->builder->postToObject($item);
-			
 			$saved = $this->menumodel->saveOrUpdate($item);
 			$data = $this->getData();
 			$data['base'] = $this->menumodel->getMenuById($saved->getId());
 			
-
 			if($saved){
 				redirect($this->controller.'/edit/' . $saved->getId() . '/' . SUCCESS);
 			} else {
 				$data['error'][] = $this->lang->line('save_error') . ' ' . $this->lang->line('check_fields');
 			}
 			
-			$this->template->setViewAdmin($this->title, $this->controller.'/edit', $data);
+			$this->renderAdmin('edit', $data);
 			
 		} else {
 			redirect($this->controller);
 		}
 	}
 
-	public function edit($id, $msg = false){
+	public function edit($id, $action = false){
 
 		$data = $this->getData();
-		$data['title'] .= ' | Editar';
 		$data['base'] = $this->menumodel->getMenuById($id);
-		
-		if($msg){
-			if($msg == SUCCESS){
-				$data['success'] = $this->lang->line('save_success');
-			} else if ($msg == DELETED){
-				$data['success'] = $this->lang->line('delete_success');
-			}
-			
-		} 
 
-		$this->template->setViewAdmin($this->title, $this->controller.'/edit', $data);
+		$message = $this->buildMessage($action, ($action == DELETED));
+
+		$this->renderAdmin('edit', $data, $message);
 	}
 	
 	public function remove($id = false, $image = false){
@@ -82,23 +78,24 @@ class Menu extends CMS_Controller {
 				if($saved){
 					redirect('menu/edit/' . $saved->getId() . '/' . DELETED);
 				} else {
-					$data['error'][] = $this->lang->line('delete_error');
+					$message['error'][] = $this->lang->line('delete_error');
 				}
 			} else {
 				$data = $this->getData();
-				$data['error'][] = $this->lang->line('delete_error');
+				$message['error'][] = $this->lang->line('delete_error');
 			}
 		} else {
 			$saved = $this->menumodel->delete($item);
+			
 			if($saved){
-				redirect('menu');
+				redirect('menu/' . DELETED);
 			} else {
 				$data = $this->getData();
-				$data['error'][] = $this->lang->line('delete_error');
+				$message['error'][] = $this->lang->line('delete_error');
 			}
 		}
 
-		$this->template->setViewAdmin($this->title, $this->controller.'/index', $data);
+		$this->renderAdmin('index', $data, $message);
 		
 	}
 	

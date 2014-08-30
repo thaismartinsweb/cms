@@ -8,14 +8,14 @@ class MenuModel extends CMS_Model {
 	
 	public function getAllData(){
 		
-		$args = array('menu_id' => 0);
+		$args = array('master' => NULL);
 		$itens = $this->findBy($args);
 		$content = false;
 		
 		if($itens){
 			foreach($itens as $item){
 				$content[] = $this->builder->objectToArray($item);
-				$content[]['subs'] = $this->getSubsMenus($item->getId());
+// 				$content[]['subs'] = $this->getSubsMenus($item);
 			}
 		}
 		
@@ -23,16 +23,16 @@ class MenuModel extends CMS_Model {
 		
 	}
 	
-	public function getSubsMenus($id){
+	public function getSubsMenus($menu){
 	
-		$args  = array('menu_id' => $id);
-		$itens = $this->findBy($args);
+		$args  = array('master' => $menu);
+		$itens = $this->find($args);
 		$content = false;
 
 		if($itens){
 			foreach($itens as $item){
 				$content[] = $this->builder->objectToArray($item);
-				$content[]['subs'] = $this->getSubsMenus($item->getId());
+// 				$content[]['subs'] = $this->getSubsMenus($item);
 			}
 		}
 		
@@ -49,7 +49,7 @@ class MenuModel extends CMS_Model {
 			
 			if($item){
 				$content = $this->builder->objectToArray($item);
-				$content['subs'] = $this->getSubsMenus($item->getId());
+// 				$content['subs'] = $this->getSubsMenus($item);
 			}
 		}
 

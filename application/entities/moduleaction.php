@@ -49,7 +49,7 @@ class ModuleAction
 	}
 
 	public function setModule($module){
-		$this->module_id = $module;
+		$this->module = $module;
 	}
 
 	public function getModule(){

@@ -5,7 +5,8 @@ define('DB_USER', 'root');
 define('DB_PASS', 'teste123');
 define('DB_DATA', 'admin');
 
-define('CHARSET', 'utf8');
+// iso-8859-1 / utf-8
+define('CHARSET', 'utf-8');
 
 define('BASE_DIR', '/var/www/admin/');
 define('CORE_DIR', BASE_DIR . 'system/core/');
@@ -20,6 +21,7 @@ define('CONTROLLER_DIR', APP_DIR . 'controller/');
 define('VIEW_DIR', APP_DIR . 'views/');
 define('MODEL_DIR', APP_DIR . 'models/');
 define('ENTITIES_DIR', APP_DIR . 'entities/');
+define('FIXTURES_DIR', APP_DIR . 'fixtures/');
 
 define('WEBROOT_DIR', 'webroot/');
 define('CSS_DIR', WEBROOT_DIR .'css/');

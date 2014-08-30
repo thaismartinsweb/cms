@@ -81,7 +81,7 @@ $config['language']	= 'portugues';
 | that require a character set to be provided.
 |
 */
-$config['charset'] = 'UTF-8';
+$config['charset'] = CHARSET;
 
 /*
 |--------------------------------------------------------------------------

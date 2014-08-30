@@ -13,36 +13,31 @@ class PhotoGallery extends CMS_Controller {
 		$data = $this->getData();
 		$data['itens'] = $this->photogallerymodel->getAllGalleries();
 		$data['menu'] = $this->moduleactionmodel->getAllActionsByModule('menu');
-		$data['lang']['no_results'] = $this->lang->line('no_results');
-		$data['lang']['last_content'] = $this->lang->line('last_content');
 		
-		$this->template->setViewAdmin($this->title, $this->controller.'/index', $data);
+		$this->renderAdmin('index', $data);
 	}
 	
 	public function fresh(){
 	
 		$data = $this->getData();
-		$data['title'] .= ' | Adicionar Novo';
-		$data['base'] = array();
-		$this->template->setViewAdmin($this->title, $this->controller.'/edit', $data);
+		$this->renderAdmin('edit', $data);
 	}
 	
-	public function edit($id, $msg = false){
+	public function edit($id, $message = false){
 
 		$data = $this->getData();
-		$data['title'] .= ' | Editar';
 		$data['base'] = $this->photogallerymodel->getPhotoGalleryById($id);
 		
-		if($msg){
-			if($msg == SUCCESS){
+		if($message){
+			if($message == SUCCESS){
 				$data['success'] = $this->lang->line('save_success');
-			} else if ($msg == DELETED){
+			} else if ($message == DELETED){
 				$data['success'] = $this->lang->line('delete_success');
 			}
 			
 		} 
 
-		$this->template->setViewAdmin($this->title, $this->controller.'/edit', $data);
+		$this->renderAdmin('edit', $data);
 
 	}
 	
@@ -54,14 +49,7 @@ class PhotoGallery extends CMS_Controller {
 			$this->load->entities('photogallery');
 				
 			$item = new entities\PhotoGallery();
-			$item->setTitle($this->input->post('title'));
-			$item->setDescription($this->input->post('description'));
-			$item->setExibition($this->input->post('order'));
-
-			if($this->input->post('id')){
-				$item->setId($this->input->post('id'));
-			}
-			var_dump($item);
+			$this->builder->postToObject($item);
 			$saved = $this->photogallerymodel->saveOrUpdate($item);
 			$data = $this->getData();
 			$data['base'] = $this->photogallerymodel->getPhotoGalleryById($saved->getId());
@@ -92,8 +80,9 @@ class PhotoGallery extends CMS_Controller {
 		$data['lang']['add_new'] = $this->lang->line('add_new');
 		$data['lang']['itens'] = $this->lang->line('itens');
 		$data['lang']['actions'] = $this->lang->line('actions');
-		$data['lang']['success'] = $this->lang->line('success');
-		$data['lang']['error'] = $this->lang->line('error');
+		
+		$data['lang']['no_results'] = $this->lang->line('no_results');
+		$data['lang']['last_content'] = $this->lang->line('last_content');
 	
 		return $data;
 	

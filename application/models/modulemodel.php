@@ -15,34 +15,24 @@ class ModuleModel extends CMS_Model {
 	
 		if($itens){
 			foreach($itens as $item){
-				$content[] = array(
-						"id" => $item->getId(),
-						"title" => $item->getTitle(),
-						"controller" =>$item->getController(),
-						"icon" => $item->getIcon(),
-						"color" => $item->getColor(),
-						"actions" => $this->getModuleAction($item)
-				);
+				$content[] = $this->builder->objectToArray($item);
+// 				$content[]['actions'] = $this->getModuleAction($item);
 			}
 		}
-	
 		return $content;
 	}
 	
 	private function getModuleAction(Module $module){
 		
-		$args = array("module" => $module->getId());
-		$itens = $this->findBy($args, 'moduleaction');
-		
+		$this->load->model('moduleactionmodel');
+		$args = array("module" => $module);
+		$itens = $this->moduleactionmodel->findBy($args);
+
 		$content = false;
 		
 		if($itens){
 			foreach($itens as $item){
-				$content[] = array(
-						"title" => $item->getTitle(),
-						"method" => $item->getMethod(),
-						"icon" => $item->getIcon()
-				); 
+				$content[] = $this->builder->objectToArray($item);
 			}
 		}
 
@@ -58,11 +48,7 @@ class ModuleModel extends CMS_Model {
 		
 		if($itens){
 			foreach($itens as $item){
-				$content[] = array(
-						"title" => $item->getTitle(),
-						"method" => $item->getMethod(),
-						"icon" => $item->getIcon()
-				); 
+				$content[] = $this->builder->objectToArray($item);
 			}
 		}
 

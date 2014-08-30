@@ -16,11 +16,11 @@ insert into module values
 (null, 'Home', 'cms', 'home', 'primary'),
 (null, 'Dados do Site', 'config', 'cogs', 'success'),
 (null, 'Menu', 'menu', 'tasks', 'info'),
-(null, 'Content', 'content', 'quote-left', 'inverse'),
+(null, 'Conteúdo', 'content', 'quote-left', 'inverse'),
 (null, 'Galeria de Fotos', 'photogallery', 'camera-retro', 'warning'),
 (null, 'Fotos', 'photo', 'picture', 'danger'),
-(null, 'Galeria de Videos', 'videogallery', 'film', 'primary'),
-(null, 'Videos', 'photo', 'play', 'success'),
+(null, 'Galeria de Videos', 'videogallery', 'film', 'module'),
+(null, 'Videos', 'video', 'play', 'success'),
 (null, 'Categoria de Produtos', 'productcategory', 'tags', 'info'),
 (null, 'Produtos', 'product', 'glass', 'inverse'),
 (null, 'Contatos', 'form', 'envelope-alt', 'warning'),
@@ -65,7 +65,14 @@ insert into type_page values
 select * from config;
 select * from menu;
 select * from content;
-select * from type_page;
+
 
 drop table content;
 drop table menu;
+
+select * from module;
+select * from module_action;
+select * from type_page;
+select * from type_menu;
+
+select * from menu where menu_id = 0;
